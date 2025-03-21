@@ -1,21 +1,12 @@
 # python_template
 General purpose template for installable python projects
 
-## Todo
-
-- [ ] Add github actions (testing, deployment, publishing)
+Now uses `uv` to manage the environment!
 
 ## Installation
 
 ```bash
-micromamba create -f environment.yml
-micromamba activate template
-
-pip install .  # Basic install
-pip install -e ".[dev]"  # Install in editable mode with dev dependencies
-pip install ".[test]"  # Install the package and all test dependencies
-
-demo-script  # Run the included scripts from the shell
+uv run demo-script  # THATS ALL!
 ```
 
 ## Usage
@@ -31,10 +22,9 @@ scripts.demo.main()
 
 ### Running pre-commit hooks
 
-```bash
-# Install the hooks:
-pre-commit install
+Requires a system installation of pre-commit.
 
+```bash
 # Run all the hooks:
 pre-commit run --all-files
 ```
@@ -44,5 +34,5 @@ pre-commit run --all-files
 ```bash
 # Pytest will find all files with the name "test_*.py" or "*_test.py" and run them:
 
-pytest
+uv run pytest
 ```
