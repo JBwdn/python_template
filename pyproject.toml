@@ -1,13 +1,18 @@
 [build-system]
-requires = [ "setuptools>=61",]
-build-backend = "setuptools.build_meta"
+requires = [ "hatchling",]
+build-backend = "hatchling.build"
 
 [project]
 name = "template"
-version = "0.1"
-requires-python = ">=3.10"
+version = "0.1.0"
+description = "General purpose, installable python template"
+readme = "README.md"
+requires-python = ">=3.13"
 dependencies = []
 dynamic = []
+
+[[project.authors]]
+name = "Jake Bowden"
 
 [project.urls]
 Homepage = "https://github.com/JBwdn/python_template"
@@ -16,8 +21,10 @@ Homepage = "https://github.com/JBwdn/python_template"
 demo-script = "package.scripts.demo:main"
 
 [project.optional-dependencies]
-dev = [ "black", "isort", "pre-commit", "pylint", "pyright", "pytest",]
-test = [ "pytest",]
+test = [ "pytest>=8.3.5",]
+
+[tool.hatch.build.targets.wheel]
+packages = [ "src/package",]
 
 [tool.pylint]
 max-line-length = 100
@@ -35,4 +42,5 @@ line-length = 100
 profile = "black"
 filter_files = true
 
-[tool.setuptools.packages.find]
+[dependency-groups]
+dev = [ "black>=25.1.0", "isort>=6.0.1", "pylint>=3.3.6", "pyright>=1.1.397", "pytest>=8.3.5",]
